@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>產生訂單</h1>
+
+  <form action="<%= actionUrl %>" method="post">
+
+    <input type="text" name="MerchantID" value="<%= MerchantID %>"> <br>
+    <input type="text" name="MerchantTradeNo" value="<%= MerchantTradeNo %>"> <br>
+    <input type="text" name="MerchantTradeDate" value="<%= MerchantTradeDate %>"> <br>
+    <input type="text" name="PaymentType" value="<%= PaymentType %>"> <br>
+    <input type="number" name="TotalAmount" value="<%= TotalAmount %>"> <br>
+    <input type="text" name="TradeDesc" value="<%= TradeDesc %>"> <br>
+    <input type="text" name="ItemName" value="<%= ItemName %>"> <br>
+    <input type="text" name="ReturnURL" value="<%= ReturnURL %>"> <br>
+    <input type="text" name="ChoosePayment" value="<%= ChoosePayment %>"> <br>
+    <input type="number" name="EncryptType" value="<%= EncryptType %>"> <br>
+    <input type="text" name="CheckMacValue" value="<%= CheckMacValue %>"> <br>
+
+    <button type="submit">送出</button>
+  </form>
+</body>
+
+</html>

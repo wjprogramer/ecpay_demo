@@ -1,7 +1,8 @@
-import express, { Request, Response, NextFunction, IRouterHandler } from 'express';
-import { json as jsonBodyParser } from 'body-parser';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
+import express from 'express';
+import axios from 'axios';
+import FormData from 'form-data';
+import { getGlobal } from '@src/global';
+import { asyncHandler } from '@src/utils';
 
 export const getMainRouter = () => {
   const mainRouter = express.Router();
@@ -11,11 +12,26 @@ export const getMainRouter = () => {
       res.json({ msg: 'hello world' });
     })
 
-  mainRouter.route('/')
-    .post((req, res) => {
-      const { data } = req.body;
-      res.json({ result: true });
-    });
+  mainRouter.route('/redirect')
+    .get((_, res) => {
+      res.redirect('https://www.google.com');
+    })
+
+  mainRouter.route('/send-html')
+    .get((_, res) => {
+      res.set('Content-Type', 'text/html');
+      res.send(Buffer.from('<h2>Hello ~</h2>'));
+    })
+
+  mainRouter.route('/order')
+    .get(asyncHandler(async (_, res) => {
+      // const { env } = getGlobal();
+      // const form = new FormData();
+      // form.append('MerchantID', env.M_MERCHANT_ID);
+      // form.append('file', fs.createReadStream('/pictures/avatar.png'))
+      // const ecPayRes = await axios.post(`${env.EC_PAY_DOMAIN}/Cashier/AioCheckOut/V5`);
+      res.json({ msg: 'Hi' });
+    }));
 
   return mainRouter;
 }
