@@ -6,6 +6,11 @@ import cookieParser from 'cookie-parser';
 export const getMainRouter = () => {
   const mainRouter = express.Router();
 
+  mainRouter.route('/hello')
+    .get((_, res) => {
+      res.json({ msg: 'hello world' });
+    })
+
   mainRouter.route('/')
     .post((req, res) => {
       const { data } = req.body;
